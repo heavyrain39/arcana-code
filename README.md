@@ -76,4 +76,4 @@
 
 ## 저작권
 
-Copyright (c) 2024 Yakshawan
+Copyright (c) 2025 Yakshawan
