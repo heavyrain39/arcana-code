@@ -1,0 +1,399 @@
+/* public/style.css (v17 - Error Message Whitespace Fix) */
+
+/* --- 커스텀 폰트 설정 --- */
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('../fonts/GmarketSansMedium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Pretendard-Medium';
+    src: url('../fonts/Pretendard-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* --- 변수 설정 --- */
+:root {
+    --mint-green: #64F0C8;
+    --mint-green-darker: #4BCDAA;
+    --dark-bg: #282c34;
+    --dark-surface: #353a45;
+    --light-text: #e6e6e6;
+    --secondary-text: #b0b0b0;
+    --border-color: #4d5360;
+    --focus-glow-color: rgba(100, 240, 200, 0.4);
+    --error-color: #ff7b7b; /* 오류 색상 */
+    --error-bg-color: rgba(255, 123, 123, 0.1); /* 오류 배경색 */
+
+    --font-body: 'Pretendard-Medium', sans-serif;
+    --font-heading: 'GmarketSansMedium', sans-serif;
+    --font-weight-medium: 500;
+
+    --column-gap: 30px;
+    --container-padding: 30px;
+    --column-internal-padding: 25px;
+}
+
+/* --- 기본 설정 및 전체 레이아웃 --- */
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-medium);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: var(--container-padding);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* 타이틀 컨테이너 및 라인 스타일 */
+.title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 30px 0;
+    flex-shrink: 0;
+}
+
+.title-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--light-text);
+    opacity: 0.3;
+    margin: 0 20px;
+}
+
+h1 {
+    font-family: var(--font-heading);
+    text-align: center;
+    color: var(--light-text);
+    margin: 0;
+    font-size: 2.2em;
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 1px;
+    flex-shrink: 0;
+}
+
+.main-layout {
+    display: flex;
+    gap: var(--column-gap);
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.left-column, .right-column {
+    background-color: var(--dark-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.left-column {
+    flex-basis: 40%;
+}
+
+.right-column {
+    flex-basis: 60%;
+    padding: var(--column-internal-padding);
+}
+
+
+/* --- 왼쪽 컬럼 내부 스타일 --- */
+.left-column .section {
+    padding: 0 var(--column-internal-padding);
+    margin-bottom: 25px;
+    flex-shrink: 0;
+}
+.left-column #prompt-section {
+    padding-top: var(--column-internal-padding);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.section-header h2 {
+    margin: 0;
+    padding: 0;
+    border-bottom: none;
+    font-size: 1.5em;
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-medium);
+    color: var(--light-text);
+}
+
+.section-header button#reset-prompt-btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    margin-left: 15px;
+}
+
+h2 { /* 기본 h2 스타일 */
+    font-family: var(--font-heading);
+    color: var(--light-text);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    font-weight: var(--font-weight-medium);
+}
+.left-column #question-section h2,
+.right-column #result-section h2 {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+
+textarea {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-medium);
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    resize: none;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    text-align: justify;
+}
+textarea:focus {
+    border-color: var(--mint-green);
+    box-shadow: 0 0 0 3px var(--focus-glow-color);
+}
+
+#prompt-section textarea {
+    min-height: 100px;
+    max-height: 25vh;
+    overflow-y: auto;
+}
+
+.button-wrapper.centered {
+    text-align: center;
+    margin-top: 15px;
+}
+.button-wrapper button { margin: 0 8px; }
+
+button {
+    background-color: var(--mint-green);
+    color: var(--dark-bg);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-medium);
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    display: inline-block;
+    vertical-align: middle;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+button:hover { background-color: var(--mint-green-darker); box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); }
+button:active { background-color: var(--mint-green-darker); transform: translateY(1px); box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2); }
+button:disabled { background-color: #555; color: #999; cursor: not-allowed; box-shadow: none; transform: none; }
+
+.footer-image-wrapper {
+    padding-top: 25px;
+    margin: 0 var(--column-internal-padding) 0;
+    width: calc(100% - (var(--column-internal-padding) * 2));
+    overflow: hidden;
+    border-radius: 10px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    margin-top: auto;
+    position: relative;
+    line-height: 0;
+}
+
+#footer-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 10px;
+    vertical-align: middle;
+}
+
+.copyright {
+    font-size: 0.75rem;
+    color: var(--secondary-text);
+    text-align: center;
+    padding: 10px var(--column-internal-padding) var(--column-internal-padding);
+    margin: 0;
+    flex-shrink: 0;
+}
+
+
+/* --- 오른쪽 컬럼 내부 스타일 --- */
+#result-section {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#loading-spinner { text-align: center; padding: 40px 0; flex-shrink: 0; }
+#loading-spinner .spinner { font-size: 3em; color: var(--mint-green); display: inline-block; animation: spin 2s linear infinite; }
+#loading-spinner p { margin-top: 15px; font-size: 1.1em; color: var(--secondary-text); font-family: var(--font-heading); }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+#card-display {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed var(--border-color);
+    flex-shrink: 0;
+    font-size: 1.25em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* style.css 수정 */
+
+.card-item {
+    display: block;
+    width: fit-content;
+    max-width: 95%;
+    text-align: left !important;
+    opacity: 0; /* ★★★ 초기 상태: 안 보임 (유지) */
+    /* transform: translateY(10px); */ /* ★★★ 제거: 아래에서 올라오는 효과 제거 */
+    /* ★★★ 수정: transition에서 transform 제거 */
+    transition: opacity 0.4s ease; /* opacity 변화만 부드럽게 (시간 약간 줄임) */
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.card-item.visible {
+    opacity: 1; /* ★★★ 최종 상태: 완전히 보임 (유지) */
+    /* transform: translateY(0); */ /* ★★★ 제거: 제자리로 오는 효과 제거 */
+}
+
+/* 아래 스타일은 변경 없음 */
+.card-item .position {
+    color: var(--secondary-text);
+    margin-right: 10px;
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-medium);
+    display: inline-block;
+}
+.card-item .card-name {
+    color: var(--mint-green);
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-medium);
+    /* 타이핑 효과를 위해 여기서 opacity나 transform을 건드리지 않음 */
+}
+
+#interpretation {
+    line-height: 1.8;
+    white-space: pre-wrap; /* 해석 본문은 줄바꿈 유지 */
+    background-color: transparent;
+    padding: 15px 5px 5px 15px;
+    font-size: 0.95rem;
+    color: var(--light-text);
+    border: none;
+    flex-grow: 1;
+    overflow-y: auto;
+    min-height: 100px;
+    text-align: justify; /* 해석 본문은 양쪽 정렬 */
+}
+#interpretation h3 {
+    font-family: var(--font-heading);
+    color: var(--mint-green);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: var(--font-weight-medium);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 6px;
+    text-align: left; /* 제목은 왼쪽 정렬 */
+}
+#interpretation h3::before { content: "🔮 "; margin-right: 5px; }
+#interpretation h3:first-of-type { margin-top: 0; }
+#interpretation p {
+    margin-bottom: 15px;
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-medium);
+}
+#interpretation p:last-of-type { margin-bottom: 0; }
+#interpretation strong {
+    color: var(--mint-green);
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-medium);
+}
+
+#placeholder-section {
+    text-align: center;
+    color: var(--secondary-text);
+    font-size: 1.1em;
+    padding: 50px 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ★★★ 오류 메시지 스타일 수정 ★★★ */
+.error-message {
+    color: var(--error-color);
+    background-color: var(--error-bg-color);
+    border: 1px solid var(--error-color);
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin: 20px 0;
+    text-align: left !important; /* 왼쪽 정렬 강제 */
+    line-height: 1.6;
+    font-size: 0.9rem;
+    white-space: normal !important; /* ★★★ 중요: pre-wrap 상속 방지 ★★★ */
+    word-break: keep-all; /* ★★★ 한글 단어 중간 줄바꿈 방지 ★★★ */
+}
+.error-title {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+}
+
+
+/* --- 커스텀 스크롤바 스타일 --- */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--dark-surface); border-radius: 10px; }
+::-webkit-scrollbar-thumb { background-color: var(--border-color); border-radius: 10px; border: 2px solid var(--dark-surface); }
+::-webkit-scrollbar-thumb:hover { background-color: var(--secondary-text); }

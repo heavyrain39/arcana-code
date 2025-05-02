@@ -134,3 +134,19 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Build artifacts (pkg로 생성된 파일)
+/dist/
+*.exe
+
+# Distribution package (배포용 압축 파일)
+*.zip
+
+# Secrets (API 키 파일)
+key.txt
+.env*
+!.env.example
+
+# OS generated files
+.DS_Store
+Thumbs.db
