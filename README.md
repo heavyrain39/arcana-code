@@ -7,7 +7,7 @@
 ## 주요 기능
 
 *   3카드 타로 리딩 (과거-현재-미래)
-*   Google Gemini AI 기반 해석 (모델: gemini-1.5-flash)
+*   Google Gemini AI 기반 해석 (모델: gemini-2.5-flash)
 *   사용자 본인의 API 키 사용 (안전 및 사용량 관리)
 *   로컬 PC 환경에서 간편하게 실행 (별도 프로그램 설치 불필요, Windows 64bit 지원)
 
