@@ -76,4 +76,4 @@
 
 ## 저작권
 
-ⓒ 2024 Yakshawan. All rights reserved.
+Copyright (c) 2024 Yakshawan
