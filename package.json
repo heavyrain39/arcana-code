@@ -1,6 +1,6 @@
 {
   "name": "arcana-code",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Personal Tarot Reading Application using Gemini AI",
   "main": "server.js",
   "bin": "server.js",

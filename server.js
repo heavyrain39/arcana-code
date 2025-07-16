@@ -60,7 +60,7 @@ let model = null;
 if (apiKey) { // apiKey가 성공적으로 로드된 경우에만 시도
     try {
         const genAI = new GoogleGenerativeAI(apiKey);
-        model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-preview-04-17" });
+        model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
         isModelInitialized = true; // 초기화 성공 상태 기록
         console.log("Gemini AI Model initialized successfully.");
     } catch (initError) {
